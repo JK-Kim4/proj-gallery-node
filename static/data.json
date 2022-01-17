@@ -1,0 +1,19 @@
+{
+    "photos" : [
+        {
+            "id": 0,
+            "title" : "first photo",
+            "url" : "/public/images/default.jpeg"
+        },
+        {
+            "id": 1,
+            "title" : "first photo",
+            "url" : "/public/images/default.jpeg"
+        },
+        {
+            "id": 2,
+            "title" : "first photo",
+            "url" : "/public/images/travis.png"
+        }
+    ]
+}

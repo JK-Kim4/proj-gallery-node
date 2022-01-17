@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/public/css/gallery.css">
+</head>
+<body>
+    <div class="container">
+        <div class="image-container">
+            <table>
+                <tr class="t-header">
+                    <th colspan="2">Table Header hear</th>
+                </tr>
+                <% if(resData) { %>
+               <tr class="t-body">
+                   <td colspan="2">
+                        <img class="main-image" src="<%=resData[0].url %>" alt="">
+                   </td>
+               </tr>
+                <tr class="t-footer">
+                    <td><button type="button" class="move-photo" data-value="0">이전</button></td>
+                    <td><button type="button" class="move-photo" data-value="1">다음</button></td>
+                </tr>
+                <% } else { %>
+                    <tr>
+                        <td colspan="2" class="t-body">
+                            <p>등록된 이미지가 없습니다.</p>
+                        </td>
+                    </tr>
+                    <tr class="t-footer">
+
+                    </tr>
+                <% } %>
+            </table>
+        </div>
+        <div class="list-contariner">
+            <table>
+                <tr class="t-header">
+                    <th colspan="3">사진 목록</th>
+                    <% if(resData) {%>
+                        <tr>
+                        <% resData.forEach(result => { %>
+                            <td><p class="move-photo" data-value="<%= result.id%>"><%= result.id %></p></td>
+                        <% }); %>
+                        </tr>
+                    <% } %>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script src="/public/js/gallery.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(document).on("click", ".move-photo", function(){
+            id = $(this).data("value");
+            console.log("id : " + id);
+            if(id != undefined){
+                $.ajax({
+                    url : "/gallery/photo/" + id,
+                    type : "GET",
+                    success : function(data){
+                        var html = "<td colspan='2'>";
+                        if(data.result = 'success'){
+                            $(".t-body").empty();
+                            $(".t-footer").empty();
+                            html += "<img class='main-image' src='" + data.photo.url + "' alt=''></td>";
+                            $(".t-body").html(html);
+                            if(data.pre == undefined){
+                                html = "<td><button type='button' class='move-photo' data-value='" + data.next.id +"'>다음</button></td>";
+                            }else if(data.next == undefined){
+                                html = "<td><button type='button' class='move-photo' data-value='" + data.pre.id +"'>이전</button></td>";
+                            }else{
+                                html = "<td><button type='button' class='move-photo' data-value='" + data.pre.id +"'>이전</button></td>"
+                                html += "<td><button type='button' class='move-photo' data-value='" + data.next.id +"'>다음</button></td>";
+                            }
+                            $(".t-footer").html(html);
+                        }
+                        else{
+                            console.log(data);
+                        }
+                    },
+                    error : function(err){
+                        console.log(err);
+                    }
+                });
+            }else{
+                alert("다음 사진이 없습니다.");
+                return;
+            }
+        });
+    </script>
+</body>
+</html>
