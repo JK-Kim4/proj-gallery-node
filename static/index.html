@@ -6,40 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .wrapper{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+        body, html { 
+            margin: 0;
+            padding: 0;
+            height: 100%;
         }
-        .container{
-            font-family: system-ui, serif;
-            font-size: 2rem;
-            padding: 8rem;
-            border-radius: 1rem;
+        .wrapper {
+            height: 100vh;
+            background: url('/public/images/rm.jpeg') no-repeat center center fixed;
         }
-        span{
-            display:inline-block;
-            font-size:10vw;
-            font-family: "Fredoka One", cursive;
-            color: #24A19C;
-            transition:all 0.5s;
-            animation: rotate 5s ease-in infinite;
-            animation-direction: alternate;
-            letter-spacing: 0.5vw;
-            -webkit-text-stroke: 1.5px #000;
-          }
-          
-        @keyframes rotate{
-            0%{
-              transform:rotateY(90deg);
-              text-shadow:0 0 0 #24A19C;
-            }
-            100%{
-              transform:rotateY(0deg);
-              text-shadow:0.1em 0.1em .15em #24A19C;
-            }
-          }
     </style>
 </head>
 <body>

@@ -6,51 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/public/css/gallery.css">
+    <style>
+        body, html { 
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        .wrapper {
+            height: 100vh;
+            background: url('/public/images/rm.jpeg') no-repeat center center fixed;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="image-container">
-            <table>
-                <tr class="t-header">
-                    <th colspan="2">Table Header hear</th>
-                </tr>
-                <% if(resData) { %>
-               <tr class="t-body">
-                   <td colspan="2">
-                        <img class="main-image" src="<%=resData[0].url %>" alt="">
-                   </td>
-               </tr>
-                <tr class="t-footer">
-                    <td><button type="button" class="move-photo" data-value="0">이전</button></td>
-                    <td><button type="button" class="move-photo" data-value="1">다음</button></td>
-                </tr>
-                <% } else { %>
-                    <tr>
-                        <td colspan="2" class="t-body">
-                            <p>등록된 이미지가 없습니다.</p>
-                        </td>
-                    </tr>
-                    <tr class="t-footer">
-
-                    </tr>
-                <% } %>
-            </table>
-        </div>
-        <div class="list-contariner">
-            <table>
-                <tr class="t-header">
-                    <th colspan="3">사진 목록</th>
-                    <% if(resData) {%>
-                        <tr>
-                        <% resData.forEach(result => { %>
-                            <td><p class="move-photo" data-value="<%= result.id%>"><%= result.id %></p></td>
-                        <% }); %>
-                        </tr>
-                    <% } %>
-                </tr>
-            </table>
+    <div class="wrapper">
+        <div class="container">
         </div>
     </div>
+    
 
     <script src="/public/js/gallery.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
