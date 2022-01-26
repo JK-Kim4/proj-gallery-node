@@ -1,0 +1,23 @@
+body, html { 
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+.wrapper {
+    display : flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: url('/public/images/rm-cutout.jpg') no-repeat center center fixed;
+}
+.container{
+    position : relative;
+    opacity : 50%;
+    height : 46vh;
+    width : 55vh;
+    border : 2px solid red;
+    background-color: gray;
+    bottom : 53px;
+    text-align : center;
+}
