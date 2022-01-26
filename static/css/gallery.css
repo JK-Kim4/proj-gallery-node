@@ -13,11 +13,13 @@ body, html {
 }
 .container{
     position : relative;
-    opacity : 50%;
+    opacity : 80%;
     height : 46vh;
     width : 55vh;
-    border : 2px solid red;
-    background-color: gray;
     bottom : 53px;
     text-align : center;
+}
+.container img{
+    height: 100%;
+    width: 100%;
 }

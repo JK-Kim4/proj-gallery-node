@@ -28,7 +28,8 @@ route.get("/", (req,res)=>{
 route.get('/selectAll', (req,res)=>{
     console.log("select all");
     var resData = '';
-    request("http://192.168.219.101:18080/photos", function(err, response, body){
+    //request("http://192.168.219.101:18080/photos", function(err, response, body){
+    request("http://localhost:13000/photos", (err, response, body)=>{
         if(!err && response.statusCode == 200){
             var data = JSON.parse(body);
             res.json(data);

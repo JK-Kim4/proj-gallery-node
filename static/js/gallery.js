@@ -12,7 +12,15 @@ var main = {
             contentType : "applicaiton/json; charset=utf-8",
             success : function(data){
                 console.log("successed");
-                console.log("data = " + data);
+                var html = "<img src="+data.data[0].imgurl+" alt='test data'>";
+                $(".container").html(html);
+
+                html = "";
+
+                for(let i = 0; i < data.data.length; i++){
+                    html += "<button id=>"+(i+1)+"</button>";
+                }
+                $(".remote").html(html);
             },
             error : function(err){
                 console.log("error occuer");
