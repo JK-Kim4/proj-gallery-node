@@ -25,14 +25,28 @@ route.get("/", (req,res)=>{
 });
 
 //select all
-route.get('/selectAll', (req,res)=>{
+route.get('/photos', (req,res)=>{
     console.log("select all");
-    var resData = '';
     //request("http://192.168.219.101:18080/photos", function(err, response, body){
     request("http://localhost:13000/photos", (err, response, body)=>{
         if(!err && response.statusCode == 200){
             var data = JSON.parse(body);
             res.json(data);
+        }
+    });
+});
+
+//select by id
+route.get('/photo/:id', (req,res)=>{
+    var id = req.params.id;
+    console.log("query paramter id : " + id);
+
+    //request("http://192.168.219.101:18000/photo/"+id, (err, response, body)=>{
+    request("http://localhost:13000/photo/"+id, (err, response, body)=>{
+        var data = JSON.parse(body);
+        if(!err && response.statusCode == 200 && data.result == 'success'){
+            console.log(data.data[0]);
+            res.json(data.data[0]);
         }
     });
 });
