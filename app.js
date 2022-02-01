@@ -11,12 +11,16 @@ app.set('views', './static/views')
 app.set('view engine', 'ejs');
 
 const gallery = require("./app/routes/gallery");
+const s3 = require("./app/routes/s3");
+app.use("/s3", s3);
 app.use("/gallery", gallery);
 
 app.get("/", (req,res)=>{
     console.log("index page");
     res.sendFile(path.join(__dirname, 'static', 'index.html'));
 });
+
+
 
 app.listen(PORT, (err)=>{
     if(err)

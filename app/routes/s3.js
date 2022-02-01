@@ -2,12 +2,22 @@
 const multer = require('multer');
 var storage = multer.memoryStorage()
 var upload = multer({storage: storage});
+const path = require('path');
 const s3 = require('../modules/s3upload');
 const express = require('express');
-const router = express.Router();
+const app = express();
+const route = express.Router();
+
+app.use('/public', express.static(path.join(__dirname, 'static')));
+
+// s3 이미지 업로드 페이지
+route.get('/upload', (req, res)=>{
+    console.log("enter upload page");
+    res.render("upload");
+});
 
 // s3 이미지 업로드 위해서
-router.post('/api/file/upload', upload.single("file"), function(req, res){
+route.post('/api/file/upload', upload.single("file"), function(req, res){
     const s3Client = s3.s3Client;
     const params = s3.uploadParams;
     
@@ -26,4 +36,4 @@ router.post('/api/file/upload', upload.single("file"), function(req, res){
     });
 });
 
-module.exports = router;
+module.exports = route;
