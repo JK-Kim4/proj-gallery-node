@@ -17,7 +17,7 @@ route.get('/upload', (req, res)=>{
 });
 
 // s3 이미지 업로드 위해서
-route.post('/api/file/upload', upload.single("file"), function(req, res){
+route.post('/api/file/upload', upload.single("img-file"), function(req, res){
     const s3Client = s3.s3Client;
     const params = s3.uploadParams;
     
