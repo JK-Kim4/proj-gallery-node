@@ -5,15 +5,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .container{
+            margin : 0 auto;
+            text-align: center;
+        }
+        #file-form{
+            width: 56vh;
+            height: 56vh;
+            margin: auto;
+            border: 2px solid black;
+        }
+        .file-data > ul{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .file-data > ul > li{
+            text-align:start;
+            width: 100%;
+            height: 50%;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-    <h2>UPLOAD PAGE</h2>
-    <form method="POST" action="/s3/api/file/upload" enctype="multipart/form-data">
-
-        <span>FILE</span>
-        <input type="file" name="file" id="">
-
-        <button type="submit">submit</button>
-    </form>
+    <div class="container">
+        <h2>UPLOAD PAGE</h2>
+        <form id="file-form">
+            <input type="hidden" name="img-url" id="img=url">
+            <div class="file-data">
+                <ul>
+                    <li>
+                        <label for="img-title">제목 : </label>
+                        <input type="text" id="img-title" name="title" style="margin-left: 30px; width:70%;"> 
+                    </li>
+                    <li>
+                        <label for="img-content">내용 : </label>
+                        <textarea name="img-content" id="img-content" cols="30" rows="10" style="margin-left: 30px; width:70%"></textarea>
+                    </li>
+                    <li>
+                        <label for="img-file">파일 업로드 : </label>
+                        <input type="file" name="img-file" id="img-file" style="border: 1px solid gray; padding: 1px;">
+                        <button type="button">업로드</button>
+                    </li>
+                </ul>
+            </div>
+            <button type="button" style="margin-top: 5px;">등록</button>
+        </form>
+    </div>
 </body>
 </html>
