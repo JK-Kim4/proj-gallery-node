@@ -12,7 +12,7 @@ app.set('view engine', 'ejs');
 
 const gallery = require("./app/routes/gallery");
 const s3 = require("./app/routes/s3");
-app.use("/s3", s3);
+//app.use("/s3", s3);
 app.use("/gallery", gallery);
 
 app.get("/", (req,res)=>{

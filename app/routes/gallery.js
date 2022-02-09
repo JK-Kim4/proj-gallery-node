@@ -5,7 +5,7 @@ const path = require('path');
 const http = require('http');
 const route = express.Router();
 const app = express();
-const db = require('../config/db');
+//const db = require('../config/db');
 const { func } = require('joi');
 const cors = require('cors');
 const request = require('request');
@@ -51,18 +51,18 @@ route.get('/photo/:id', (req,res)=>{
     });
 });
 
-route.get('/sql', (req,res1)=>{
-    db.query('SELECT * FROM comments c', (err, res2)=>{
-        console.log(res2.rows);
-        if(err)
-            console.log(err);
-        else
-            res1.render('index', {
-                resData : jsonData.photos,
-                sqlData : res2.rows
-            });
-    });
-});
+// route.get('/sql', (req,res1)=>{
+//     db.query('SELECT * FROM comments c', (err, res2)=>{
+//         console.log(res2.rows);
+//         if(err)
+//             console.log(err);
+//         else
+//             res1.render('index', {
+//                 resData : jsonData.photos,
+//                 sqlData : res2.rows
+//             });
+//     });
+// });
 
 
 module.exports = route;
