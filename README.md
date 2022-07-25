@@ -1,7 +1,7 @@
-# Node Gallary
+# personal project [react.js / *node.js / java]
 
 > node.js를 통해 서버 환경 구성 
-> 직접 촬영한 사진 파일 전시를 목적으로 함
+> Database 통신을 통하여 데이터베이스 조회
 
 ---
 
